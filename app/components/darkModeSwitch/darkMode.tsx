@@ -1,16 +1,16 @@
 'use client'
 import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '@/app/store'
 import { toggleDarkMode } from '@/app/store/slices/darkModeSlice'
-import { selectDarkMode } from '@/app/store/slices/darkModeSlice'
 
 export interface DarkModeState {
     darkMode: boolean
 }
 
 export default function DarkModeSwitch() {
+    const darkMode = useSelector((state: RootState) => state.darkMode.darkMode)
     const dispatch = useDispatch()
 
-    const darkMode = useSelector(selectDarkMode)
     console.log(darkMode)
 
     const handleToggle = () => {
