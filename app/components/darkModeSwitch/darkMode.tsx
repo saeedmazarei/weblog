@@ -6,7 +6,7 @@ export interface DarkModeState {
     darkMode: boolean
 }
 
-const DarkModeSwitch: React.FC = () => {
+export default function DarkModeSwitch() {
     const dispatch = useDispatch()
 
     const darkMode = useSelector(selectDarkMode)
@@ -25,5 +25,3 @@ const DarkModeSwitch: React.FC = () => {
         </div>
     )
 }
-
-export default DarkModeSwitch
