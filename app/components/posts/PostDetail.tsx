@@ -1,5 +1,5 @@
-function PostDetail() {
-    return <h1>saeed</h1>
+function PostDetail({ id }: { id: string }) {
+    return <h1>{id}</h1>
 }
 
 export default PostDetail
