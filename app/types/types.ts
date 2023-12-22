@@ -8,7 +8,3 @@ export interface Posts {
 export interface PostDetailProps {
     post: Posts;
   }
-
-export interface DarkModeState {
-    value: boolean;
-  }

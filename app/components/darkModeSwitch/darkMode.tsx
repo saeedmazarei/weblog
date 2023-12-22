@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleDarkMode } from '@/app/store/slices/darkModeSlice'
+import { selectDarkMode } from '@/app/store/slices/darkModeSlice'
 
 export interface DarkModeState {
     darkMode: boolean
@@ -8,7 +9,7 @@ export interface DarkModeState {
 const DarkModeSwitch: React.FC = () => {
     const dispatch = useDispatch()
 
-    const darkMode = useSelector((state: { darkMode: DarkModeState }) => state.darkMode.darkMode)
+    const darkMode = useSelector(selectDarkMode)
     console.log(darkMode)
 
     const handleToggle = () => {
