@@ -1,0 +1,40 @@
+.all-posts-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    top: -10px;
+    a {
+        padding: 1rem 0;
+    }
+}
+
+.post-item {
+    transition: transform 0.3s ease-out;
+}
+
+.post-item:hover {
+    transform: scale(1.2);
+}
+
+.post-item:hover:not(:focus) {
+    transform: scale(1);
+    transition: transform 0.2s;
+}
+
+.post-title {
+    color: #feb3d8;
+    font-weight: 900;
+    font-size: 28px;
+    margin: 0;
+}
+
+.post-date {
+    font-size: 13px;
+    margin: 0;
+}
+
+.post-body {
+    margin-top: 0.25rem;
+}
