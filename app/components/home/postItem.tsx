@@ -1,11 +1,12 @@
+'use client'
 import { PostDetailProps } from '@/app/types/types'
 
 import styles from './home.module.scss'
-import { generateDate } from '@/app/helper/functions';
+import { generateDate } from '@/app/helper/functions'
 
 function PostItem({ post }: PostDetailProps) {
-    const truncatedBody = post.body.length > 50 ? `${post.body.substring(0, 50)}...` : post.body;
-    const date = generateDate(post.id);
+    const truncatedBody = post.body.length > 50 ? `${post.body.substring(0, 50)}...` : post.body
+    const date = generateDate(post.id)
 
     return (
         <article className={styles['post-item']}>

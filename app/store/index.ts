@@ -1,4 +1,4 @@
-// src/redux/store.ts
+'use client'
 import { configureStore } from '@reduxjs/toolkit';
 import darkModeReducer from './slices/darkModeSlice'
 

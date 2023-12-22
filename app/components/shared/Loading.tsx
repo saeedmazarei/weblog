@@ -1,3 +1,4 @@
+'use client'
 import styles from './Loading.module.scss'
 import Image from 'next/image'
 
@@ -9,7 +10,7 @@ function Loading() {
                 alt="Loading"
                 width={100}
                 height={100}
-                priority={false}
+                priority={true}
             />
         </div>
     )
