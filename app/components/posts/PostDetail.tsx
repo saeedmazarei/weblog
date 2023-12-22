@@ -1,5 +1,10 @@
-function PostDetail({ id }: { id: string }) {
-    return <h1>{id}</h1>
+import { getPostDetail } from "@/app/services/apis"
+import { Posts } from "@/app/types/types"
+
+async function PostDetail({ id }: { id: number }) {
+    const res = await getPostDetail(id)
+    const detail: Posts = res.data
+    return <h1>{detail.body}</h1>
 }
 
 export default PostDetail
