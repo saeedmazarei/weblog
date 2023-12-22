@@ -1,7 +1,11 @@
-import AllPosts from "./components/home/home";
+import DarkModeSwitch from './components/darkModeSwitch/darkMode'
+import AllPosts from './components/home/home'
 
 export default function Home() {
-    return <main>
-      <AllPosts />
-    </main>
+    return (
+        <main>
+            {/* <DarkModeSwitch /> */}
+            <AllPosts />
+        </main>
+    )
 }
