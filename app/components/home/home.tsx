@@ -6,6 +6,7 @@ import { Posts } from '@/app/types/types'
 import { getAllPosts } from '@/app/services/apis'
 import PostItem from './postItem'
 import styles from './home.module.scss'
+import Loading from '../shared/Loading'
 
 function AllPosts() {
     const { data, isLoading } = useQuery<Posts[]>({
@@ -18,7 +19,7 @@ function AllPosts() {
 
     return (
         <>
-            {isLoading && <div>Loading...</div>}
+            {isLoading && <Loading />}
             <div className={styles['all-posts-container']}>
                 {data?.map((post) => (
                     <Link href={`${post.id}`} key={post.id}>
