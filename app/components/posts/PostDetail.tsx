@@ -6,6 +6,7 @@ import { Posts } from '@/app/types/types'
 import { generateDate } from '@/app/helper/functions'
 import Header from '../header/header'
 import styles from './PostDetail.module.scss'
+import Loading from '../shared/Loading'
 
 function PostDetail({ id }: { id: number }) {
     const { data, isLoading } = useQuery<Posts>({
@@ -19,7 +20,7 @@ function PostDetail({ id }: { id: number }) {
 
     return (
         <>
-            {isLoading && <div>Loading...</div>}
+            {isLoading && <Loading />}
             <Header style={{ color: '#D9B6FA' }} />
             <article className={styles['post-container']}>
                 <h1>{data?.title}</h1>
