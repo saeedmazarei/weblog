@@ -1,16 +1,21 @@
-import { getAllPosts } from '@/app/services/apis'
+import Link from 'next/link'
 
-interface Posts {
-    userId: number
-    id: number
-    title: string
-    body: string
-}
+import { Posts } from '@/app/types/types'
+import { getAllPosts } from '@/app/services/apis'
+import PostItem from './postItem'
 
 async function AllPosts() {
     const res = await getAllPosts()
-    const post: Posts[] = res.data
-    return <h1>{post[0].id}</h1>
+    const posts: Posts[] = res.data
+    return (
+        <div>
+            {posts.map((post) => (
+                <Link href={`${post.id}`} key={post.id}>
+                    <PostItem post={post} />
+                </Link>
+            ))}
+        </div>
+    )
 }
 
 export default AllPosts
