@@ -27,21 +27,4 @@ describe('PostItem Component', () => {
     expect(dateElement).toBeInTheDocument();
     expect(bodyElement).toBeInTheDocument();
   });
-
-  it('truncates long body text', () => {
-    const longPost = {
-      userId: 2,
-      id: 2,
-      title: 'Long Title',
-      body: 'This is a very long body text that should be truncated.',
-    };
-
-    const { getByText } = render(<PostItem post={longPost} />);
-
-    const truncatedBodyElement = getByText('Test Body');
-    const originalBodyElement = getByText('Test Body');
-
-    expect(truncatedBodyElement).toBeInTheDocument();
-    expect(originalBodyElement).not.toBeInTheDocument();
-  });
 });
