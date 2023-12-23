@@ -7,7 +7,7 @@ import AxiosErrorHandler from './services/ErrorHandler'
 
 export default function Body({ children }: { children: React.ReactNode }) {
     const darkMode = useSelector((state: RootState) => state.darkMode.darkMode)
-    console.log(darkMode)
+
     return (
         <body data-theme={darkMode && "dark"}>
             <AxiosErrorHandler />
