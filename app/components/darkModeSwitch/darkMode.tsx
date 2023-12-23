@@ -10,7 +10,7 @@ export interface DarkModeState {
 export default function DarkModeSwitch() {
     const darkMode = useSelector((state: RootState) => state.darkMode.darkMode)
     const dispatch = useDispatch()
-console.log(darkMode)
+
     const handleToggle = () => {
         localStorage.setItem('darkMode', JSON.stringify(!darkMode))
         dispatch(toggleDarkMode())
