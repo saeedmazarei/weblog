@@ -16,6 +16,4 @@ describe('Header Component', () => {
     const linkElement = getByText(/overreacted/i);
     expect(linkElement).toHaveStyle(customStyle);
   });
-
-  // Add more test cases based on your component's behavior
 });
