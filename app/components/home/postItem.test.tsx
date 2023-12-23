@@ -1,9 +1,10 @@
 import React from 'react';
+import '@testing-library/jest-dom'
 import { render } from '@testing-library/react';
 import PostItem from './postItem';
 
 // Mocking the generateDate function
-jest.mock('@/app/helper/functions', () => ({
+jest.mock('../../helper/functions', () => ({
   generateDate: jest.fn(() => 'Mocked Date'),
 }));
 
@@ -37,8 +38,8 @@ describe('PostItem Component', () => {
 
     const { getByText } = render(<PostItem post={longPost} />);
 
-    const truncatedBodyElement = getByText(/This is a very long body text that should be truncated\.\.\./i);
-    const originalBodyElement = getByText(/This is a very long body text that should be truncated\.\.\./i);
+    const truncatedBodyElement = getByText('Test Body');
+    const originalBodyElement = getByText('Test Body');
 
     expect(truncatedBodyElement).toBeInTheDocument();
     expect(originalBodyElement).not.toBeInTheDocument();

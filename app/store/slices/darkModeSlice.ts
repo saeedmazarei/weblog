@@ -7,7 +7,7 @@ interface DarkModeState {
 }
 
 const initialState: DarkModeState = {
-    darkMode: false,
+    darkMode: localStorage.getItem('darkMode') === 'true' ? true : false,
 }
 
 const darkModeSlice = createSlice({
