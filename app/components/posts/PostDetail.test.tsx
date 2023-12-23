@@ -1,86 +1,71 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { Provider } from 'react-redux' 
+import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
 import PostDetail from './PostDetail'
-
-// Mock data
-const mockPosts = [
-  { 
-    userId: 1, 
+// Mock API response
+const mockPost = {
+    userId: 1,
     id: 1,
-    title: 'Test Post 1',
-    body: 'Body of test post 1'
-  },
-  {
-    userId: 2, 
-    id: 2,
-    title: 'Test Post 2', 
-    body: 'Body of test post 2'
-  }
-]
+    title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
+    body: 'quia et suscipit...',
+}
 
-// Mock Redux store
 const mockReducer = () => ({
-  darkMode: {
-    darkMode: false
-  }
+    darkMode: {
+        darkMode: false,
+    },
 })
 
+// create mock store
 const store = createStore(mockReducer)
 
-// React Query client
 const queryClient = new QueryClient()
-queryClient.setQueryData('posts', mockPosts)
+// Mock API call
+jest.mock('../../services/apis', () => ({
+    getPostDetail: () => Promise.resolve({ data: mockPost }),
+}))
 
 describe('PostDetail', () => {
+    // omit other tests for brevity
 
-  beforeEach(() => {
-    jest.resetModules() 
-  })
+    it('renders post details', async () => {
+        const { findByText } = render(
+            <QueryClientProvider client={queryClient}>
+                <Provider store={store}>
+                    <PostDetail id={1} />
+                </Provider>
+            </QueryClientProvider>,
+        )
 
-  it('renders post details', () => {
-   
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
-          <PostDetail id={1} />
-        </Provider>
-      </QueryClientProvider>
-    )
-    
-    expect(screen.getByText('Test Post 1')).toBeInTheDocument()
-    expect(screen.getByText('Body of test post 1')).toBeInTheDocument()
-  })
+        expect(await findByText(mockPost.title)).toBeInTheDocument()
+        expect(await findByText(mockPost.body)).toBeInTheDocument()
+    })
+    it('renders in light mode', () => {
+        render(
+            <QueryClientProvider client={queryClient}>
+                <Provider store={store}>
+                    <PostDetail id={1} />
+                </Provider>
+            </QueryClientProvider>,
+        )
 
-  it('renders in light mode', () => {
+        // Assert light mode
+    })
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
-          <PostDetail id={1} />
-        </Provider>
-      </QueryClientProvider>  
-    )
+    it('renders in dark mode', () => {
+        store.dispatch({ type: 'TOGGLE_DARK_MODE' })
 
-    // Assert light mode 
-  })
+        render(
+            <QueryClientProvider client={queryClient}>
+                <Provider store={store}>
+                    <PostDetail id={1} />
+                </Provider>
+            </QueryClientProvider>,
+        )
 
-  it('renders in dark mode', () => {
-
-    store.dispatch({type: 'TOGGLE_DARK_MODE'})
-    
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
-           <PostDetail id={1} />
-        </Provider>
-      </QueryClientProvider>
-    )
-
-    // Assert dark mode
-  })
-
+        // Assert dark mode
+    })
 })
