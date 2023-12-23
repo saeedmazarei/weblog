@@ -5,12 +5,24 @@
     box-sizing: border-box;
 }
 
+:root {
+    --background-color: #FFFFFF;
+    --primary-text-color: #222;
+    --pink: lab(81 32.36 -7.02);
+    --purple: lab(78 19.97 -36.75);
+}
+
+[data-theme="dark"] {
+    --background-color: #222;
+    --primary-text-color: #FFFFFF;
+}
+
 body {
     max-width: 42rem;
     padding: 3rem 1.25rem;
-    background-color: #282c35;
+    background-color: var(--background-color);
     margin: 0 auto;
-    color: #e5e5e6;
+    color: var(--primary-text-color);
 }
 
 a {

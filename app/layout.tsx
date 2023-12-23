@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import './globals.css'
+
 import ReduxStoreProvider from './provider/reduxStoreProvider'
 import ReactQueryProvider from './provider/ReactQueryProvider'
-import AxiosErrorHandler from './services/ErrorHandler'
+import './globals.css'
+import Body from './body'
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -12,14 +13,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html>
-            <body>
-                <ReduxStoreProvider>
-                    <ReactQueryProvider>
-                        <AxiosErrorHandler />
-                        <>{children}</>
-                    </ReactQueryProvider>
-                </ReduxStoreProvider>
-            </body>
+            <ReduxStoreProvider>
+                <ReactQueryProvider>
+                    <Body>{children}</Body>
+                </ReactQueryProvider>
+            </ReduxStoreProvider>
         </html>
     )
 }

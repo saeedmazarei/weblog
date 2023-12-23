@@ -11,8 +11,6 @@ export default function DarkModeSwitch() {
     const darkMode = useSelector((state: RootState) => state.darkMode.darkMode)
     const dispatch = useDispatch()
 
-    console.log(darkMode)
-
     const handleToggle = () => {
         dispatch(toggleDarkMode())
     }
